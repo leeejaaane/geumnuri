@@ -299,6 +299,9 @@ function onReadFile(e) {
 }
 
 var fontFileName = 'fonts/FiraSansMedium.woff';
+
+document.getElementById('font-name').innerHTML = fontFileName.split('/')[1];
+
 var fileButton = document.getElementById('file');
 fileButton.addEventListener('change', onReadFile, false);
 
@@ -309,9 +312,8 @@ fontSizeSlider.addEventListener('change', fontSizeChanged, false);
 
 enableHighDPICanvas('preview');
 enableHighDPICanvas('snap');
-    
 
-opentype.load('ABCFavoritLiningEdu-Book.otf', function(err, font) {
+opentype.load('fonts/Roboto-Black.ttf', function(err, font) {
     if (err) {
         alert('Font could not be loaded: ' + err);
     } else {
@@ -327,26 +329,6 @@ opentype.load('ABCFavoritLiningEdu-Book.otf', function(err, font) {
         path.draw(ctx);
     }
 });
-    
-     function readTextFile(file) {
-        var rawFile = new XMLHttpRequest();
-        rawFile.open("GET", file, false);
-        rawFile.onreadystatechange = function () {
-            if(rawFile.readyState === 4)
-            {
-                if(rawFile.status === 200 || rawFile.status == 0)
-                {
-                    var allText = rawFile.responseText;
-                    alert(allText);
-                }
-            }
-        };
-        rawFile.send(null);
-    }
-
-    readTextFile("/ABCFavoritLiningEdu-Book.otf/js/functions.js");
-
-
     
 </script>
 </body>
